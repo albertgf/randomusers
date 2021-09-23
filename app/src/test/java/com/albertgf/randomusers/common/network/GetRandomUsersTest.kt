@@ -14,7 +14,8 @@ class GetRandomUsersTest : ApiClientTest() {
 
     @Test
     fun get_random_users() {
-        val response = client.getUsers()
+
+        val response = client.users()
 
         assert(response.isSuccessful())
     }

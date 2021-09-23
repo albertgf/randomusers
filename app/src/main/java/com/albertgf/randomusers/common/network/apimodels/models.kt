@@ -1,19 +1,28 @@
 package com.albertgf.randomusers.common.network.apimodels
 
+import android.util.Log
 import com.google.gson.annotations.SerializedName
 
 data class ResultsApi(
-    @SerializedName("results") val results: List<UserAPI>
+    @SerializedName("results") val results: List<UserApi>
 )
 
-data class UserAPI(
+data class UserApi(
     @SerializedName("id") val id: IdApi,
-    @SerializedName("gender") val gender: StringBuffer,
+    @SerializedName("name") val name: NameApi,
+    @SerializedName("gender") val gender: String,
     @SerializedName("email") val email: String,
     @SerializedName("location") val location: LocationAPI,
     @SerializedName("phone") val phone: String,
     @SerializedName("picture") val picture: PictureApi,
-    @SerializedName("registered") val registered: RegisteredApi
+    @SerializedName("registered") val registered: RegisteredApi,
+    @SerializedName("login") val login: LoginApi
+)
+
+data class NameApi(
+    @SerializedName("title") val title: String,
+    @SerializedName("first") val first: String,
+    @SerializedName("last") val last: String
 )
 
 data class IdApi(
@@ -41,4 +50,8 @@ data class PictureApi(
     @SerializedName("large") val large: String,
     @SerializedName("medium") val medium: String,
     @SerializedName("thumbnail") val thumb: String
+)
+
+data class LoginApi(
+    @SerializedName("uuid") val uuid: String
 )

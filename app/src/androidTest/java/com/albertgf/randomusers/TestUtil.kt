@@ -7,9 +7,9 @@ class TestUtil {
         fun createUser(uid: String) : User {
             return User(
                 uid = uid,
-                name = "name",
-                surname = "surname",
-                email = "email",
+                name = "name${uid}",
+                surname = "surname${uid}",
+                email = "email${uid}",
                 picture  = "picture",
                 phone  = "phone",
                 gender = "gender",

@@ -7,25 +7,33 @@ import androidx.paging.PagingData
 import com.albertgf.randomusers.common.db.User
 import com.albertgf.randomusers.common.db.UserDb
 import com.albertgf.randomusers.common.network.RandomUserClient
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.withContext
 
-class UserRepository(private val db: UserDb, private val api: RandomUserClient) {
+class UserRepository(
+    private val db: UserDb,
+    private val api: RandomUserClient,
+    private val dispatcher: CoroutineDispatcher = Dispatchers.IO
+) {
 
     @OptIn(ExperimentalPagingApi::class)
-    fun getUsers(): Flow<PagingData<User>> = Pager(
-            config = PagingConfig(
-                pageSize = 40,
-                enablePlaceholders = false
-            ),
-            remoteMediator = UserRemoteMediator(db, api)
-        ) {
-        db.users().getAll()
-    }.flow
-
-    fun getUsersFiltered(query: String): Flow<PagingData<User>> = Pager(
-        config = PagingConfig(
-            pageSize = 20,
-            enablePlaceholders = false),
-            pagingSourceFactory = { db.users().findFiltered(query)}
-        ).flow
+    suspend fun getUsers(query: String): Flow<PagingData<User>> {
+        return withContext(dispatcher) {
+            Pager(
+                config = PagingConfig(
+                    pageSize = 40,
+                    enablePlaceholders = false
+                ),
+                remoteMediator = UserRemoteMediator(db, api)
+            ) {
+                if (query.isEmpty()) {
+                    db.users().getAll()
+                } else {
+                    db.users().findFiltered("%${query}%")
+                }
+            }.flow
+        }
+    }
 }

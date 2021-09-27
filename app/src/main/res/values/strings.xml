@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">RandomUsers</string>
+    <string name="hint_search">Search by name, surname or email</string>
 </resources>

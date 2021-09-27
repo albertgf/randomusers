@@ -2,6 +2,17 @@ package com.albertgf.randomusers
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
+import androidx.compose.material.TextField
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.ViewCompositionStrategy
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.lifecycle.lifecycleScope
 import com.albertgf.randomusers.databinding.MainActivityBinding
 import com.albertgf.randomusers.features.users.UsersListViewModel
@@ -24,14 +35,39 @@ class MainActivity : ComponentActivity() {
         _binding = MainActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        initView()
+        initList()
+        initSearchBox()
         collectUiState()
     }
 
-    private fun initView() {
+    private fun initList() {
         adapter = UserListAdapter()
 
         binding.rvUsers.adapter = adapter
+    }
+
+    private fun initSearchBox() {
+        binding.searchBox.apply {
+            setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
+            setContent {
+                val filter: String by usersViewModel.filter.collectAsState()
+                MaterialTheme {
+
+
+                    TextField(
+                        value = filter,
+                        onValueChange = { textValue ->
+                            usersViewModel.changeFilter(textValue)
+                            collectUiState()
+                        },
+                        label = { Text(stringResource(id = R.string.hint_search)) },
+                        maxLines = 1,
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                }
+            }
+        }
     }
 
     private fun collectUiState() {

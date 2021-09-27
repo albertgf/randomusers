@@ -12,7 +12,7 @@ interface UserDao {
     fun getCount() : Int
 
     @Query("SELECT * FROM users Where name Like :name OR surname LIKE :surname OR email LIKE :email")
-    fun findByName(name: String, surname: String, email: String) : List<User>
+    fun findFiltered(name: String, surname: String, email: String) : PagingSource<Int, User>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertAll(users: List<User>)

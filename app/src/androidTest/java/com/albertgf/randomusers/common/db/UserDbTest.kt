@@ -62,10 +62,7 @@ class UserDbTest {
 
         db.users().insertAll(users)
 
-        val usersDb = db.users().findFilteredTest(users[0].name)
-        usersDb[0].deleted = true
-
-        db.users().deleteUserFromQuery(usersDb[0])
+        db.users().deleteUser(users[0].uid)
 
         val usersSize = db.users().getAllTest().size
 

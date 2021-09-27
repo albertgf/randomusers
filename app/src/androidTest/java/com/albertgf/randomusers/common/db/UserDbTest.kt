@@ -37,7 +37,7 @@ class UserDbTest {
 
         db.users().insertAll(listOf(user))
 
-        val users = db.users().findByName(user.name, "", "")
+        val users = db.users().findFilteredTest(user.name, "", "")
 
         assertThat(users[0].name, equalTo(user.name))
     }
@@ -49,7 +49,7 @@ class UserDbTest {
 
         db.users().insertAll(users)
 
-        val usersDb = db.users().findByName(users[0].name,"", "")
+        val usersDb = db.users().findFilteredTest(users[0].name,"", "")
 
         assert(usersDb.size == 1)
     }
@@ -62,12 +62,12 @@ class UserDbTest {
 
         db.users().insertAll(users)
 
-        val usersDb = db.users().findByName(users[0].name,"","")
+        val usersDb = db.users().findFilteredTest(users[0].name,"","")
         usersDb[0].deleted = true
 
         db.users().deleteUserFromQuery(usersDb[0])
 
-        val usersSize = db.users().getCount()
+        val usersSize = db.users().getAllTest().size
 
         assert(usersSize == 2)
     }
@@ -80,7 +80,7 @@ class UserDbTest {
 
         db.users().insertAll(users)
 
-        val usersDb = db.users().findByName("", "", "email2")
+        val usersDb = db.users().findFilteredTest("", "", "email2")
 
         assert(usersDb.size == 1)
     }
@@ -93,7 +93,7 @@ class UserDbTest {
 
         db.users().insertAll(users)
 
-        val usersDb = db.users().findByName("name1", "", "")
+        val usersDb = db.users().findFilteredTest("name1", "", "")
 
         assert(usersDb.size == 1)
     }
@@ -106,7 +106,7 @@ class UserDbTest {
 
         db.users().insertAll(users)
 
-        val usersDb = db.users().findByName("", "surname0", "")
+        val usersDb = db.users().findFilteredTest("", "surname0", "")
 
         assert(usersDb.size == 1)
     }

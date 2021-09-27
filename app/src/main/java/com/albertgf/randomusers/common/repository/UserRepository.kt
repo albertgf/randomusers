@@ -36,4 +36,16 @@ class UserRepository(
             }.flow
         }
     }
+
+    suspend fun deleteUser(uid: String) {
+        return withContext(dispatcher) {
+            db.users().deleteUser(uid)
+        }
+    }
+
+    suspend fun getUser(uid: String) : User {
+        return withContext(dispatcher) {
+            db.users().getUser(uid)
+        }
+    }
 }

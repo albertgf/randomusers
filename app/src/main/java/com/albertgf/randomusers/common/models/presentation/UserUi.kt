@@ -1,6 +1,16 @@
 package com.albertgf.randomusers.common.models.presentation
 
-data class UserUi (
+data class UserUiMinimal(
+    val uid: String,
+    val name: String,
+    val surname: String,
+    val email: String,
+    val picture: String,
+    val phone: String
+)
+
+
+data class UserUi(
     val uid: String,
     val name: String,
     val surname: String,
@@ -12,4 +22,22 @@ data class UserUi (
     val city: String,
     val state: String,
     val registeredDate: String
-        )
+) {
+    companion object {
+        fun blank(): UserUi {
+            return UserUi(
+                uid = "",
+                name = "",
+                surname = "",
+                email = "",
+                picture = "",
+                phone = "",
+                gender = "",
+                street = "",
+                city = "",
+                state = "",
+                registeredDate = ""
+            )
+        }
+    }
+}

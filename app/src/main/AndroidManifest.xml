@@ -11,10 +11,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:theme="@style/Theme.RandomUsers">
+        android:theme="@style/Theme.RandomUsers"
+        android:usesCleartextTraffic="true">
         <activity
-            android:name=".MainActivity"
+            android:name=".features.users.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.RandomUsers.NoActionBar">
@@ -24,6 +24,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".features.users.DetailActivity"
+            android:theme="@style/Theme.RandomUsers.NoActionBar"/>
     </application>
 
 </manifest>

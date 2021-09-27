@@ -1,7 +1,8 @@
-package com.albertgf.randomusers
+package com.albertgf.randomusers.features.users
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.ComponentActivity
+import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.MaterialTheme
@@ -14,13 +15,15 @@ import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.lifecycle.lifecycleScope
+import com.albertgf.randomusers.R
+import com.albertgf.randomusers.common.extensions.collectFlow
 import com.albertgf.randomusers.databinding.MainActivityBinding
-import com.albertgf.randomusers.features.users.UsersListViewModel
 import com.albertgf.randomusers.features.users.adapter.UserListAdapter
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
 
     private var _binding: MainActivityBinding? = null
     private val binding: MainActivityBinding get() = _binding!!
@@ -38,10 +41,12 @@ class MainActivity : ComponentActivity() {
         initList()
         initSearchBox()
         collectUiState()
+
+        this.collectFlow(::setupEventsViewModel)
     }
 
     private fun initList() {
-        adapter = UserListAdapter()
+        adapter = UserListAdapter(usersViewModel)
 
         binding.rvUsers.adapter = adapter
     }
@@ -82,6 +87,23 @@ class MainActivity : ComponentActivity() {
         super.onDestroy()
         adapter = null
         _binding = null
+    }
+
+    private suspend fun setupEventsViewModel() {
+        usersViewModel.eventsFlow.collect {
+            when (it) {
+                is UsersListViewModel.Event.NavigateToUser -> {
+                    navigateToUser(it.uid)
+                }
+            }
+        }
+    }
+
+    private fun navigateToUser(uid: String) {
+        val intent = Intent(baseContext, DetailActivity::class.java).apply {
+            putExtra("uid", uid)
+        }
+        startActivity(intent)
     }
 }
 

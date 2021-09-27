@@ -10,6 +10,7 @@ class TestUtil {
                 name = "name${uid}",
                 surname = "surname${uid}",
                 email = "email${uid}",
+                thumb = "thumb",
                 picture  = "picture",
                 phone  = "phone",
                 gender = "gender",

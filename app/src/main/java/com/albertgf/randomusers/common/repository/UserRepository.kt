@@ -22,11 +22,10 @@ class UserRepository(private val db: UserDb, private val api: RandomUserClient) 
         db.users().getAll()
     }.flow
 
-    fun getUsersFiltered(name: String, surname: String, email: String): Flow<PagingData<User>> = Pager(
+    fun getUsersFiltered(query: String): Flow<PagingData<User>> = Pager(
         config = PagingConfig(
             pageSize = 20,
             enablePlaceholders = false),
-            pagingSourceFactory = { db.users().findFiltered(name, surname, email)}
+            pagingSourceFactory = { db.users().findFiltered(query)}
         ).flow
-
 }

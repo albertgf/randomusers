@@ -2,37 +2,50 @@ package com.albertgf.randomusers
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
-import com.albertgf.randomusers.ui.theme.RandomUsersTheme
+import androidx.lifecycle.lifecycleScope
+import com.albertgf.randomusers.databinding.MainActivityBinding
+import com.albertgf.randomusers.features.users.UsersListViewModel
+import com.albertgf.randomusers.features.users.adapter.UserListAdapter
+import kotlinx.coroutines.flow.collectLatest
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : ComponentActivity() {
+
+    private var _binding: MainActivityBinding? = null
+    private val binding: MainActivityBinding get() = _binding!!
+
+    private val usersViewModel: UsersListViewModel by viewModel()
+
+    private var adapter: UserListAdapter? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            RandomUsersTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(color = MaterialTheme.colors.background) {
-                    Greeting("Android")
-                }
+
+        _binding = MainActivityBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        initView()
+        collectUiState()
+    }
+
+    private fun initView() {
+        adapter = UserListAdapter()
+
+        binding.rvUsers.adapter = adapter
+    }
+
+    private fun collectUiState() {
+        lifecycleScope.launchWhenStarted {
+            usersViewModel.getUsers().collectLatest { users ->
+                adapter?.submitData(users)
             }
         }
     }
-}
 
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    RandomUsersTheme {
-        Greeting("Android")
+    override fun onDestroy() {
+        super.onDestroy()
+        adapter = null
+        _binding = null
     }
 }
+

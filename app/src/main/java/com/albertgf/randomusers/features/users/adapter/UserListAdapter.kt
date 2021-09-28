@@ -44,10 +44,6 @@ class UserViewHolder(
     fun bind(viewModel: UsersListViewModel, user: UserUiMinimal) {
         binding.viewmodel = viewModel
         binding.user = user
-        binding.name.text = "${user.name} ${user.surname}"
-        binding.email.text = user.email
-        binding.phone.text = user.phone
-        binding.userPicture.download(user.picture)
     }
 
     companion object {

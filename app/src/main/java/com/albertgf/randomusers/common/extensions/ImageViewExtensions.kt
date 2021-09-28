@@ -32,3 +32,28 @@ fun ImageView.download(url: String, onReady: () -> Unit = {}) {
         })
         .into(this)
     }
+
+fun ImageView.downloadIntoCircle(url: String, onReady: () -> Unit = {}) {
+    Glide.with(context)
+        .load(url)
+        .listener(object : RequestListener<Drawable> {
+            override fun onLoadFailed(
+                e: GlideException?,
+                model: Any?,
+                target: Target<Drawable>?,
+                isFirstResource: Boolean
+            ) = false
+
+            override fun onResourceReady(
+                resource: Drawable?,
+                model: Any?,
+                target: Target<Drawable>?,
+                dataSource: DataSource?,
+                isFirstResource: Boolean
+            ): Boolean {
+                onReady()
+                return false
+            }
+        }).circleCrop()
+        .into(this)
+}

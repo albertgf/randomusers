@@ -6,11 +6,11 @@
 
         <variable
             name="user"
-            type="com.albertgf.randomusers.common.models.presentation.UserUiMinimal" />
+            type="com.albertgf.randomusers.common.core.models.presentation.UserUiMinimal" />
 
         <variable
             name="viewmodel"
-            type="com.albertgf.randomusers.features.users.UsersListViewModel" />
+            type="com.albertgf.randomusers.features.users.list.UsersListViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

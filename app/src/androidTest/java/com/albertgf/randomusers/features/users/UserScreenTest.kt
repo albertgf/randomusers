@@ -7,8 +7,9 @@ import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.test.core.app.ApplicationProvider
 import com.albertgf.randomusers.TestUtil
-import com.albertgf.randomusers.common.models.mapper.UserMapper
-import com.albertgf.randomusers.common.models.presentation.UserUi
+import com.albertgf.randomusers.common.core.models.mapper.UserMapper
+import com.albertgf.randomusers.common.core.models.presentation.UserUi
+import com.albertgf.randomusers.features.users.detail.UserScreen
 import com.albertgf.randomusers.ui.theme.RandomUsersTheme
 import org.junit.Assert
 import kotlinx.coroutines.flow.MutableStateFlow

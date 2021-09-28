@@ -1,7 +1,7 @@
 package com.albertgf.randomusers
 
 import android.app.Application
-import com.albertgf.randomusers.common.di.commonModelsModule
+import com.albertgf.randomusers.common.core.di.commonModelsModule
 import com.albertgf.randomusers.features.users.di.featureUsersModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin

@@ -1,6 +1,6 @@
 package com.albertgf.randomusers
 
-import com.albertgf.randomusers.common.db.User
+import com.albertgf.randomusers.common.core.db.User
 
 class TestUtil {
     companion object {

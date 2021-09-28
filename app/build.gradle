@@ -74,6 +74,8 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:2.4.0-beta01'
 
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
+    debugImplementation("androidx.compose.ui:ui-test-manifest:$compose_version")
+
 
     //API NETWORK
     implementation 'com.google.code.gson:gson:2.8.2'

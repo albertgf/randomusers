@@ -25,8 +25,10 @@ class UserRemoteMediator(private val database: UserDb, private val api: RandomUs
                     return MediatorResult.Success(endOfPaginationReached = false)
                 }
                 LoadType.APPEND -> {
-                    state.lastItemOrNull()
-                        ?: return MediatorResult.Success(endOfPaginationReached = false)
+                    val page = state.pages.size
+                    if (page > 1)
+                        state.lastItemOrNull()
+                            ?: return MediatorResult.Success(endOfPaginationReached = false)
                 }
             }
 

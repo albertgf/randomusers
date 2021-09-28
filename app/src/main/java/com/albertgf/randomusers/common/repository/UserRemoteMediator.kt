@@ -50,6 +50,10 @@ class UserRemoteMediator(private val database: UserDb, private val api: RandomUs
                     )
                 } ?: emptyList()
 
+                if (response.isEmpty()) {
+                    throw IOException()
+                }
+
                 database.runInTransaction {
                     userDao.insertAll(response)
                 }

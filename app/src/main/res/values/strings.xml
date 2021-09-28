@@ -6,6 +6,7 @@
     <string name="previous">Previous</string>
     <string name="cd_delete">delete user</string>
     <string name="user_full_name">%1$s, %2$s</string>
+    <string name="toast_network_error">network problem, please check your connection and try again</string>
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>

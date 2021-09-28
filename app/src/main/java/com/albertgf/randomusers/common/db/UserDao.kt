@@ -5,7 +5,7 @@ import androidx.room.*
 
 @Dao
 interface UserDao {
-    @Query("SELECT * FROM users WHERE uid = :uid")
+    @Query("SELECT * FROM users WHERE uid = :uid AND deleted = 0")
     fun getUser(uid: String) : User
 
     @Query("SELECT * FROM users WHERE deleted = 0")
@@ -17,10 +17,10 @@ interface UserDao {
     @Query("SELECT COUNT(uid) FROM users WHERE deleted = 0")
     fun getCount() : Int
 
-    @Query("SELECT * FROM users Where name Like :query OR surname LIKE :query OR email LIKE :query")
+    @Query("SELECT * FROM users Where deleted = 0 AND (name Like :query OR surname LIKE :query OR email LIKE :query)")
     fun findFiltered(query: String) : PagingSource<Int, User>
 
-    @Query("SELECT * FROM users Where name Like :query OR surname LIKE :query OR email LIKE :query")
+    @Query("SELECT * FROM users Where deleted = 0 AND (name Like :query OR surname LIKE :query OR email LIKE :query)")
     fun findFilteredTest(query: String) : List<User>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)

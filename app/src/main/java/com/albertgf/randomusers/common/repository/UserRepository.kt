@@ -23,7 +23,7 @@ class UserRepository(
         return withContext(dispatcher) {
             Pager(
                 config = PagingConfig(
-                    pageSize = 40,
+                    pageSize = 10,
                     enablePlaceholders = false
                 ),
                 remoteMediator = UserRemoteMediator(db, api)

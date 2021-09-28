@@ -6,6 +6,6 @@ import retrofit2.http.GET
 
 internal interface RandomUserRest {
 
-    @GET("/?results=40")
+    @GET("/?results=10")
     fun getUsers(): Call<ResultsApi>
 }

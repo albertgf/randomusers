@@ -3,6 +3,8 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="1.8">
       <module name="RandomUsers.app" target="11" />
+      <module name="RandomUsers.features.users" target="11" />
+      <module name="RandomUsers.users" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

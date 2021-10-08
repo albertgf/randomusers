@@ -1,4 +1,4 @@
-package com.albertgf.randomusers.features.users.detail
+package com.albertgf.features.users.detail
 
 import android.content.Context
 import androidx.compose.foundation.layout.Column
@@ -15,7 +15,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.albertgf.randomusers.common.core.models.presentation.UserUi
+import com.albertgf.features.users.models.UserUi
 import com.albertgf.randomusers.common.coreview.ui.compose.BasicAppBar
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions

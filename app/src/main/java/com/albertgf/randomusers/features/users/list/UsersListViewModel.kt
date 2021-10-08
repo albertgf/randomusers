@@ -2,16 +2,22 @@ package com.albertgf.randomusers.features.users.list
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.paging.ExperimentalPagingApi
 import androidx.paging.PagingData
 import androidx.paging.map
+import com.albertgf.core.usecases.DeleteUserUseCase
+import com.albertgf.core.usecases.GetUsersUseCase
 import com.albertgf.randomusers.common.core.models.mapper.UserMapper
 import com.albertgf.randomusers.common.core.models.presentation.UserUiMinimal
-import com.albertgf.randomusers.common.core.repository.UserRepository
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
-class UsersListViewModel(private val userRepository: UserRepository, private val userMapper: UserMapper) : ViewModel() {
+class UsersListViewModel(
+    private val getUsersUseCase: GetUsersUseCase,
+    private val deleteUseCase: DeleteUserUseCase,
+    private val userMapper: UserMapper
+) : ViewModel() {
 
     sealed class Event {
         data class NavigateToUser(val uid: String) : Event()
@@ -23,10 +29,11 @@ class UsersListViewModel(private val userRepository: UserRepository, private val
     private val _filter = MutableStateFlow("")
     val filter = _filter.asStateFlow()
 
-    suspend fun getUsers() : Flow<PagingData<UserUiMinimal>> {
+    @OptIn(ExperimentalPagingApi::class)
+    suspend fun getUsers(): Flow<PagingData<UserUiMinimal>> {
         val query = _filter.value
 
-        return userRepository.getUsers(query).map { pagingData ->
+        return getUsersUseCase(query).map { pagingData ->
             pagingData.map {
                 userMapper.mapDomainToUiMinimal(it)
             }
@@ -39,7 +46,7 @@ class UsersListViewModel(private val userRepository: UserRepository, private val
 
     fun deleteUser(uid: String) {
         viewModelScope.launch {
-            userRepository.deleteUser(uid)
+            deleteUseCase(uid)
         }
     }
 

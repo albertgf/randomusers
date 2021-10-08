@@ -1,4 +1,4 @@
-package com.albertgf.randomusers.common.core.network.apimodels
+package com.albertgf.randomusers.framework.api.apimodels
 
 import com.google.gson.annotations.SerializedName
 

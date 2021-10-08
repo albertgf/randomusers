@@ -7,9 +7,9 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.albertgf.randomusers.TestUtil
 import com.albertgf.randomusers.common.core.db.User
-import com.albertgf.randomusers.common.core.db.UserDb
-import com.albertgf.randomusers.common.core.network.RandomConfig
-import com.albertgf.randomusers.common.core.network.RandomUserClient
+import com.albertgf.randomusers.framework.db.UserDb
+import com.albertgf.randomusers.framework.api.RandomConfig
+import com.albertgf.randomusers.framework.api.RandomUserClient
 import org.junit.Assert
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking

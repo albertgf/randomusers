@@ -1,4 +1,4 @@
-package com.albertgf.randomusers.common.core.network
+package com.albertgf.randomusers.framework.api
 
 import java.lang.Exception
 

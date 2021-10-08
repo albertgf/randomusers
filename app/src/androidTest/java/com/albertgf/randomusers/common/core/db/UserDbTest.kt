@@ -6,6 +6,7 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.matcher.ViewMatchers.assertThat
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.albertgf.randomusers.TestUtil
+import com.albertgf.randomusers.framework.db.UserDb
 import org.hamcrest.CoreMatchers.equalTo
 import org.junit.After
 import org.junit.Before

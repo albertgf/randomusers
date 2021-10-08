@@ -1,6 +1,6 @@
 package com.albertgf.randomusers.common.core.models.mapper
 
-import com.albertgf.randomusers.common.core.db.User
+import com.albertgf.core.domain.User
 import com.albertgf.randomusers.common.coreview.extensions.formatTime
 import com.albertgf.randomusers.common.core.models.presentation.UserUi
 import com.albertgf.randomusers.common.core.models.presentation.UserUiMinimal

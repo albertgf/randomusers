@@ -1,4 +1,4 @@
-package com.albertgf.randomusers.common.core.db
+package com.albertgf.randomusers.framework.db
 
 import android.content.Context
 import androidx.room.Database
@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 @Database(
-    entities = [User::class],
+    entities = [UserEntity::class],
     version = 1,
     exportSchema = false
 )

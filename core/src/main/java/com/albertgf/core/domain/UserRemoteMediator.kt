@@ -1,21 +1,17 @@
-package com.albertgf.randomusers.common.core.repository
+package com.albertgf.core.domain
 
 import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
-import com.albertgf.randomusers.common.core.db.User
-import com.albertgf.randomusers.common.core.db.UserDb
-import com.albertgf.randomusers.common.core.network.RandomUserClient
+import com.albertgf.core.data.UserDataSource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import retrofit2.HttpException
 import java.io.IOException
 
 @OptIn(ExperimentalPagingApi::class)
-class UserRemoteMediator(private val database: UserDb, private val api: RandomUserClient) :
+class UserRemoteMediator(private val database: UserDataSource, private val api: UserDataSource) :
     RemoteMediator<Int, User>() {
-    private val userDao = database.users()
 
     override suspend fun load(loadType: LoadType, state: PagingState<Int, User>): MediatorResult {
         return try {
@@ -33,36 +29,17 @@ class UserRemoteMediator(private val database: UserDb, private val api: RandomUs
             }
 
             withContext(Dispatchers.IO) {
-                val response = api.users().body()?.results?.map {
-                    User(
-                        uid = it.login.uuid,
-                        name = it.name.first,
-                        surname = it.name.last,
-                        email = it.email,
-                        thumb = it.picture.thumb,
-                        picture = it.picture.large,
-                        phone = it.phone,
-                        gender = it.gender,
-                        street = it.location.street.name,
-                        city = it.location.city,
-                        state = it.location.state,
-                        registeredDate = it.registered.date
-                    )
-                } ?: emptyList()
+                val response = api.get()
 
                 if (response.isEmpty()) {
                     throw IOException()
                 }
 
-                database.runInTransaction {
-                    userDao.insertAll(response)
-                }
+                database.addAll(response)
             }
 
             MediatorResult.Success(endOfPaginationReached = false)
         } catch (e: IOException) {
-            MediatorResult.Error(e)
-        } catch (e: HttpException) {
             MediatorResult.Error(e)
         }
     }

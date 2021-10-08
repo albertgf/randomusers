@@ -1,6 +1,6 @@
-package com.albertgf.randomusers.common.core.network
+package com.albertgf.randomusers.framework.api
 
-import com.albertgf.randomusers.common.core.network.apimodels.ResultsApi
+import com.albertgf.randomusers.framework.api.apimodels.ResultsApi
 import retrofit2.Call
 import retrofit2.http.GET
 

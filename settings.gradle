@@ -8,3 +8,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "RandomUsers"
 include ':app'
+include ':core'

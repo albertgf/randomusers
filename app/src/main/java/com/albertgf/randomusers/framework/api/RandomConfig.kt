@@ -1,4 +1,4 @@
-package com.albertgf.randomusers.common.core.network
+package com.albertgf.randomusers.framework.api
 
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient

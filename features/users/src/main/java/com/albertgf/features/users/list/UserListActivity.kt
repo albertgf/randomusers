@@ -1,4 +1,4 @@
-package com.albertgf.randomusers.features.users.list
+package com.albertgf.features.users.list
 
 import android.content.Intent
 import android.os.Bundle
@@ -17,15 +17,15 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
-import com.albertgf.randomusers.R
-import com.albertgf.randomusers.common.coreview.extensions.collectFlow
-import com.albertgf.randomusers.databinding.MainActivityBinding
-import com.albertgf.randomusers.features.users.detail.UserDetailActivity
-import com.albertgf.randomusers.features.users.list.adapter.UserListAdapter
+import com.albertgf.common.coreview.extensions.collectFlow
+import com.albertgf.features.users.databinding.MainActivityBinding
+import com.albertgf.features.users.detail.UserDetailActivity
+import com.albertgf.features.users.list.adapter.UserListAdapter
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.IOException
+import com.albertgf.features.users.R
 
 class UserListActivity : AppCompatActivity() {
 

@@ -8,6 +8,9 @@
         <entry key="app/src/main/res/layout/activity_detail.xml" value="0.17604166666666668" />
         <entry key="app/src/main/res/layout/item_user.xml" value="0.18697916666666667" />
         <entry key="app/src/main/res/layout/main_activity.xml" value="0.18697916666666667" />
+        <entry key="features/users/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.203125" />
+        <entry key="features/users/src/main/res/layout/item_user.xml" value="0.18697916666666667" />
+        <entry key="features/users/src/main/res/layout/main_activity.xml" value="0.1272644927536232" />
       </map>
     </option>
   </component>

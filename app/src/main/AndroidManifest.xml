@@ -14,7 +14,7 @@
         android:theme="@style/Theme.RandomUsers"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".features.users.list.UserListActivity"
+            android:name="com.albertgf.features.users.list.UserListActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.RandomUsers.NoActionBar">
@@ -25,7 +25,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".features.users.detail.UserDetailActivity"
+        <activity android:name="com.albertgf.features.users.detail.UserDetailActivity"
             android:theme="@style/Theme.RandomUsers.NoActionBar"/>
     </application>
 

@@ -1,11 +1,10 @@
-package com.albertgf.randomusers.features.users.detail
+package com.albertgf.features.users.detail
 
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.runtime.collectAsState
-import com.albertgf.features.users.detail.UserScreen
-import com.albertgf.randomusers.ui.theme.RandomUsersTheme
+import com.albertgf.common.coreview.ui.theme.RandomUsersTheme
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class UserDetailActivity : AppCompatActivity() {

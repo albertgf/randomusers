@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="toast_network_error">network problem, please check your connection and try again</string>
+    <string name="cd_delete">delete user</string>
+    <string name="user_full_name">%1$s, %2$s</string>
+</resources>

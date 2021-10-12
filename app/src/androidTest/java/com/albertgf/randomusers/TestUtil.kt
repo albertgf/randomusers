@@ -1,11 +1,12 @@
 package com.albertgf.randomusers
 
-import com.albertgf.randomusers.common.core.db.User
+import com.albertgf.randomusers.framework.db.UserEntity
+
 
 class TestUtil {
     companion object {
-        fun createUser(uid: String) : User {
-            return User(
+        fun createUser(uid: String) : UserEntity {
+            return UserEntity(
                 uid = uid,
                 name = "name${uid}",
                 surname = "surname${uid}",
@@ -21,8 +22,8 @@ class TestUtil {
             )
         }
 
-        fun createUserList(size: Int, different: Boolean) : List<User> {
-            val listUser = arrayListOf<User>()
+        fun createUserList(size: Int, different: Boolean) : List<UserEntity> {
+            val listUser = arrayListOf<UserEntity>()
             repeat(size) {
                 listUser.add(createUser(if (different) it.toString() else "uid"))
             }

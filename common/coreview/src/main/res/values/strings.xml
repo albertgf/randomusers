@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="previous">Previous</string>
+    <string name="hint_search">Search by name, surname or email</string>
+</resources>

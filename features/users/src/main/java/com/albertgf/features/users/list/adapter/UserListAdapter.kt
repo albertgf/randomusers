@@ -1,15 +1,17 @@
-package com.albertgf.randomusers.features.users.list.adapter
+package com.albertgf.features.users.list.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.albertgf.randomusers.common.core.models.presentation.UserUiMinimal
-import com.albertgf.randomusers.databinding.ItemUserBinding
-import com.albertgf.randomusers.features.users.list.UsersListViewModel
+import com.albertgf.features.users.databinding.ItemUserBinding
+import com.albertgf.features.users.list.UsersListViewModel
+import com.albertgf.features.users.models.UserUiMinimal
 
-class UserListAdapter(private val viewModel: UsersListViewModel) : PagingDataAdapter<UserUiMinimal, UserViewHolder>(UserDiffCallBack()) {
+class UserListAdapter(private val viewModel: UsersListViewModel) : PagingDataAdapter<UserUiMinimal, UserViewHolder>(
+    UserDiffCallBack()
+) {
 
     override fun onBindViewHolder(holder: UserViewHolder, position: Int) {
         val item = getItem(position)

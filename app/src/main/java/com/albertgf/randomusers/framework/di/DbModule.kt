@@ -3,6 +3,7 @@ package com.albertgf.randomusers.framework.di
 import android.app.Application
 import androidx.room.Room
 import com.albertgf.core.data.UserDataSource
+import com.albertgf.randomusers.framework.db.MapperDb
 import com.albertgf.randomusers.framework.db.RoomUserDataSource
 import com.albertgf.randomusers.framework.db.UserDb
 import org.koin.android.ext.koin.androidApplication
@@ -19,5 +20,5 @@ val dbModule = module {
     }
     single { provideDB(androidApplication())}
 
-    factory<UserDataSource>(named("DB")) { RoomUserDataSource(get()) }
+    factory<UserDataSource>(named("DB")) { RoomUserDataSource(get(), MapperDb()) }
 }

@@ -1,4 +1,4 @@
-package com.albertgf.randomusers.features.users.list
+package com.albertgf.features.users.list
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -7,8 +7,8 @@ import androidx.paging.PagingData
 import androidx.paging.map
 import com.albertgf.core.usecases.DeleteUserUseCase
 import com.albertgf.core.usecases.GetUsersUseCase
-import com.albertgf.randomusers.common.core.models.mapper.UserMapper
-import com.albertgf.randomusers.common.core.models.presentation.UserUiMinimal
+import com.albertgf.features.users.models.UserUiMapper
+import com.albertgf.features.users.models.UserUiMinimal
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
 class UsersListViewModel(
     private val getUsersUseCase: GetUsersUseCase,
     private val deleteUseCase: DeleteUserUseCase,
-    private val userMapper: UserMapper
+    private val userMapper: UserUiMapper
 ) : ViewModel() {
 
     sealed class Event {

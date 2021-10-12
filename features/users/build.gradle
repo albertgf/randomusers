@@ -1,36 +1,17 @@
-plugins {
-    id 'com.android.library'
-    id 'kotlin-android'
+apply from: "${rootDir}/buildsystem/android-module.gradle"
+
+dependencies {
+    implementation project(":common:core")
+    implementation project(":common:coreview")
+
+
+    //PAGING
+    def paging_version = "3.0.1"
+
+    implementation "androidx.paging:paging-runtime:$paging_version"
+    testImplementation "androidx.paging:paging-common:$paging_version"
 }
-
-android {
-    compileSdk 31
-
-    defaultConfig {
-        minSdk 21
-        targetSdk 31
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
-}
-
+/*
 dependencies {
 
     implementation 'androidx.core:core-ktx:1.6.0'
@@ -56,4 +37,4 @@ dependencies {
     //GLIDE
     implementation "com.github.bumptech.glide:glide:4.9.0"
     implementation "com.github.skydoves:landscapist-glide:1.3.6"
-}
+}*/

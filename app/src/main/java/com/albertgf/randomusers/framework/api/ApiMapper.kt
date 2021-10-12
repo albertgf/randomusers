@@ -1,8 +1,6 @@
 package com.albertgf.randomusers.framework.api
 
 import com.albertgf.core.domain.User
-import com.albertgf.randomusers.common.core.models.presentation.UserUi
-import com.albertgf.randomusers.common.coreview.extensions.formatTime
 import com.albertgf.randomusers.framework.api.apimodels.UserApi
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers

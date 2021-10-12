@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="user"
+            type="com.albertgf.features.users.models.UserUiMinimal" />
+
+        <variable
+            name="viewmodel"
+            type="com.albertgf.features.users.list.UsersListViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> viewmodel.openUser(user.uid)}">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/userPicture"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_margin="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:loadImageCircle="@{user.picture}"/>
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:textColor="?colorPrimary"
+            android:text="@{@string/user_full_name(user.name, user.surname)}"
+            app:layout_constraintBottom_toTopOf="@+id/email"
+            app:layout_constraintStart_toEndOf="@id/userPicture"
+            app:layout_constraintEnd_toStartOf="@id/btnDelete"/>
+
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@{user.email}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/userPicture"
+            app:layout_constraintEnd_toStartOf="@id/btnDelete"/>
+
+        <TextView
+            android:id="@+id/phone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@{user.phone}"
+            app:layout_constraintTop_toBottomOf="@id/email"
+            app:layout_constraintStart_toEndOf="@id/userPicture"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btnDelete"/>
+
+        <ImageView
+            android:id="@+id/btnDelete"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_margin="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:src="@drawable/ic_baseline_delete_24"
+            app:tint="?colorPrimary"
+            android:contentDescription="@string/cd_delete"
+            android:onClick="@{() -> viewmodel.deleteUser(user.uid)}"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

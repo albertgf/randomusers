@@ -1,8 +1,7 @@
 package com.albertgf.randomusers
 
 import android.app.Application
-import com.albertgf.randomusers.common.core.di.commonModelsModule
-import com.albertgf.randomusers.features.users.di.featureUsersModule
+import com.albertgf.features.users.di.featureUsersModule
 import com.albertgf.randomusers.framework.di.apiModule
 import com.albertgf.randomusers.framework.di.dbModule
 import org.koin.android.ext.koin.androidContext
@@ -20,7 +19,6 @@ class UsersApp : Application() {
             modules(listOf(
                 apiModule,
                 dbModule,
-                commonModelsModule,
                 featureUsersModule
             ))
         }

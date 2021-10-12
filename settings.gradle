@@ -8,5 +8,6 @@ dependencyResolutionManagement {
 }
 rootProject.name = "RandomUsers"
 include ':app'
-include ':core'
+include ':common:core'
 include ':features:users'
+include ':common:coreview'

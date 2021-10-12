@@ -15,8 +15,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.albertgf.common.coreview.ui.compose.BasicAppBar
 import com.albertgf.features.users.models.UserUi
-import com.albertgf.randomusers.common.coreview.ui.compose.BasicAppBar
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.skydoves.landscapist.CircularReveal
@@ -39,7 +39,7 @@ fun UserScreen(user: State<UserUi>, context: Context, onBack: () -> Unit) {
                 .padding(24.dp)
         ) {
             GlideImage(
-                imageModel = user.value.picture ?: "",
+                imageModel = user.value.picture,
                 requestOptions = RequestOptions().circleCrop(),
                 requestBuilder = Glide.with(context).asDrawable(),
                 circularReveal = CircularReveal(duration = 250),

@@ -20,5 +20,5 @@ val featureUsersModule = module {
     factory { DeleteUserUseCase(get()) }
 
     viewModel { UsersListViewModel(get(), get(), UserUiMapper()) }
-    viewModel { UserDetailViewModel(get(), get()) }
+    viewModel { UserDetailViewModel(get(), UserUiMapper()) }
 }

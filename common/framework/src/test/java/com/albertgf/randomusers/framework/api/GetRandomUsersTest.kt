@@ -1,6 +1,5 @@
-package com.albertgf.randomusers.common.core.network
+package com.albertgf.randomusers.framework.api
 
-import com.albertgf.randomusers.framework.api.RandomUserClient
 import org.junit.Before
 import org.junit.Test
 

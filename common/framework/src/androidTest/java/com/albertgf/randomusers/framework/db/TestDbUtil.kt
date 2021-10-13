@@ -1,9 +1,7 @@
-package com.albertgf.randomusers
-
-import com.albertgf.randomusers.framework.db.UserEntity
+package com.albertgf.randomusers.framework.db
 
 
-class TestUtil {
+class TestDbUtil {
     companion object {
         fun createUser(uid: String) : UserEntity {
             return UserEntity(

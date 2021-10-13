@@ -51,6 +51,7 @@ android {
 
 dependencies {
     implementation project(":common:core")
+    implementation project(":common:framework")
     implementation project(":features:users")
 
     implementation 'androidx.core:core-ktx:1.6.0'
@@ -78,27 +79,6 @@ dependencies {
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
     debugImplementation("androidx.compose.ui:ui-test-manifest:$compose_version")
 
-
-    //API NETWORK
-    implementation 'com.google.code.gson:gson:2.8.2'
-    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
-    implementation 'com.squareup.okhttp3:okhttp:3.12.1'
-    implementation 'com.squareup.okhttp3:okhttp-urlconnection:3.4.1'
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
-
-    //DB
-    def room_version = "2.3.0"
-
-    implementation "androidx.room:room-runtime:$room_version"
-    kapt "androidx.room:room-compiler:$room_version"
-    testImplementation "androidx.room:room-testing:$room_version"
-
-    //PAGING
-    def paging_version = "3.0.1"
-
-    implementation "androidx.paging:paging-runtime:$paging_version"
-    testImplementation "androidx.paging:paging-common:$paging_version"
 
     //DI
     implementation "io.insert-koin:koin-android:3.0.1"
